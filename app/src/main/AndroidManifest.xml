@@ -13,6 +13,11 @@
             android:name=".MainActivity"
             android:label="UkuKhula"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdminProfile.ProfileActivity"
+            android:name=".admin_profile.ProfileActivity"
             android:label="Admin Profile" />
         <activity
-            android:name=".AdminProfile.Register"
+            android:name=".admin_profile.Register"
             android:label="Admin Register" />
-        <activity android:name=".StartActivity" />
         <activity
             android:name=".notifications.Eventhelper"
             android:label="Notifications" />
@@ -37,7 +41,7 @@
             android:label="Learners" />
         <activity
             android:name=".gallery.ImageDisplayActivity"
-            android:label="Gallery"></activity>
+            android:label="Gallery" />
         <activity
             android:name=".learner.RegisterLearner"
             android:label="Register Learner" />
@@ -57,7 +61,8 @@
             android:name=".Teacher.TeacherActivity"
             android:label="Registered Teachers" />
         <activity android:name=".Teacher.RegisterActivity" />
-        <activity android:name=".gallery.ZoomActivity"></activity>
+        <activity android:name=".gallery.ZoomActivity" />
+        <activity android:name=".Parent_School_View"></activity>
     </application>
 
 </manifest>

@@ -3,19 +3,18 @@ package za.co.codetribe.ukukhula;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,13 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.codetribe.ukukhula.AdminProfile.ProfileActivity;
 import za.co.codetribe.ukukhula.Groups.ClassesActivitys;
 import za.co.codetribe.ukukhula.School.SchoolRegister;
-import za.co.codetribe.ukukhula.Teacher.RegisterActivity;
 import za.co.codetribe.ukukhula.Teacher.TeacherActivity;
-import za.co.codetribe.ukukhula.gallery.GallaryActivityParent;
-import za.co.codetribe.ukukhula.gallery.ImageAdapter;
+import za.co.codetribe.ukukhula.admin_profile.ProfileActivity;
 import za.co.codetribe.ukukhula.gallery.ImageDisplayActivity;
 import za.co.codetribe.ukukhula.gallery.ImagePojo;
 import za.co.codetribe.ukukhula.learner.LearnrsActivity;
@@ -46,8 +42,11 @@ public class MainActivity extends AppCompatActivity
     ListView listView;
 
     ProgressDialog pd;
-
-
+    FirebaseUser firebaserUser;
+    DatabaseReference userRef;
+    User user;
+    DrawerLayout drawer;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +54,57 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        firebaserUser = FirebaseAuth.getInstance().getCurrentUser();
 
         listView = (ListView) findViewById(R.id.listImages);
 
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
         imgList = new ArrayList<>();
 
-        pd = new ProgressDialog(this);
-        pd.setMessage(" please wait ....");
-        pd.show();
+        //pd = new ProgressDialog(this);
+        //pd.setMessage(" please wait ....");
+        //pd.show();
+
+        if( firebaserUser != null) {
+            String uuid = firebaserUser.getUid();
+
+            userRef = FirebaseDatabase.getInstance().getReference().child("users").child(uuid);
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    user = dataSnapshot.getValue(User.class);
+                    Log.i("Dimplez" , dataSnapshot.toString());
+                    if("admin".equals(user.getUser_role()) || "teacher".equals(user.getUser_role())) {
+
+                    } else {
+                        navigationView.getMenu().removeItem(R.id.nav_teacher);
+                        navigationView.getMenu().removeItem(R.id.nav_children);
+                        navigationView.getMenu().removeItem(R.id.nav_classes);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        } else {
+            // Go to Login screen because we don't have a session.
+            Log.i("Dimplez", "We don't know what happened");
+        }
 
         databaseReference = FirebaseDatabase.getInstance().getReference("imagess");
+        /*
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -90,7 +130,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-//
+        */
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -100,14 +140,6 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -154,7 +186,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, TeacherActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_Children) {
+        } else if (id == R.id.nav_children) {
             Intent intent = new Intent(MainActivity.this, LearnrsActivity.class);
             startActivity(intent);
 
@@ -175,7 +207,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

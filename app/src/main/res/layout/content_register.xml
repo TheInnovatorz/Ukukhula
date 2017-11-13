@@ -8,7 +8,7 @@
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:background="@drawable/login_gradient"
-    tools:context="za.co.codetribe.ukukhula.AdminProfile.ProfileActivity"
+    tools:context="za.co.codetribe.ukukhula.admin_profile.ProfileActivity"
     tools:showIn="@layout/content_register"
     android:orientation="vertical"
     android:weightSum="1">

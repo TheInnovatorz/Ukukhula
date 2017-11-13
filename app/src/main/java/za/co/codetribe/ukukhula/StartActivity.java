@@ -18,9 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import za.co.codetribe.ukukhula.AdminProfile.Register;
-
-import static android.os.Build.VERSION_CODES.M;
+import za.co.codetribe.ukukhula.admin_profile.Register;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -48,19 +46,19 @@ public class StartActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAuthListener =new FirebaseAuth.AuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-           public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-               FirebaseUser user= firebaseAuth.getCurrentUser();
-//                if(user!=null)
-//               {
-//                    finish();
-//                    Intent moveToHoe=new Intent(MainActivity.this,HomeActivity.class);
-//                   startActivity(moveToHoe);
-//                }
-           }
-       };
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+             if(user!=null)
+             {
+                  finish();
+                  Intent moveToHoe=new Intent(  StartActivity.this,MainActivity.class);
+                  startActivity(moveToHoe);
+              }
+            }
+        };
 
     }
 
@@ -100,20 +98,19 @@ public class StartActivity extends AppCompatActivity {
 //        progressDialog.setMessage("Registering user......");
 //        progressDialog.show();
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "User not successful registered...please try again ", Toast.LENGTH_LONG).show();
-                        }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                progressDialog.dismiss();
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "User not successful registered...please try again ", Toast.LENGTH_LONG).show();
+                }
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(), "Error " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -133,6 +130,7 @@ public class StartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
+
     public void loginAdmin(View view) {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);

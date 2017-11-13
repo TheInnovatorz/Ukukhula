@@ -1,4 +1,4 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula.admin_profile;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
