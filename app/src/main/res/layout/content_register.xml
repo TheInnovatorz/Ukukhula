@@ -7,6 +7,7 @@
     android:paddingTop="75dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
+    android:background="@drawable/login_gradient"
     tools:context="za.co.codetribe.ukukhula.AdminProfile.ProfileActivity"
     tools:showIn="@layout/content_register"
     android:orientation="vertical"
@@ -37,10 +38,13 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:id="@+id/edtEmail"
+        android:drawableStart="@drawable/users"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/round"
+        android:padding="5dp"
+        android:textColorHint="#fff"
+        android:background="@drawable/round2"
         android:hint="Email Adress"/>
 
     <!--<EditText-->
@@ -52,10 +56,13 @@
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/edtPassword"
-        android:layout_height="45dp"
-        android:hint="password"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:textColorHint="#fff"
+        android:drawableStart="@drawable/password"
+        android:hint="Password"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/round"
+        android:background="@drawable/round2"
         />
 
 
@@ -66,14 +73,18 @@
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:id="@+id/btnRegister"
+        android:background="@drawable/login_button"
         android:layout_gravity="center_horizontal"
-        android:onClick="save"/>
+        android:onClick="save"
+        android:layout_marginTop="50dp"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAlignment="center"
         android:id="@+id/txtSign"
+        android:layout_marginTop="20dp"
         android:text="Already Registered? Sign in here"/>
 
 </LinearLayout>
