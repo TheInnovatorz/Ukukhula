@@ -1,16 +1,12 @@
 package za.co.codetribe.ukukhula.notifications;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
-
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,19 +24,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-
-
 import za.co.codetribe.ukukhula.R;
-import za.co.codetribe.ukukhula.gallery.GallaryActivity;
-import za.co.codetribe.ukukhula.gallery.ImageDisplayActivity;
-
-import static android.app.DatePickerDialog.*;
 
 /**
  * Created by Codetribe on 2017/09/01.
@@ -77,7 +65,11 @@ public class Eventhelper extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-                return super.onOptionsItemSelected(item);
+               onBackPressed();
+
+
+                return true;
+
 
         }
 
@@ -231,7 +223,11 @@ public class Eventhelper extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(Eventhelper.this, "Event saved ", Toast.LENGTH_LONG).show();
+        super.onBackPressed();
+    }
 //    public void showUpdateDIALOG(String id, String eventName, String eventDescription) {
 //        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 //        LayoutInflater inflater = getLayoutInflater();

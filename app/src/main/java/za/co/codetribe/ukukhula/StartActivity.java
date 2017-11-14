@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import za.co.codetribe.ukukhula.admin_profile.Register;
+import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class StartActivity extends AppCompatActivity {
              if(user!=null)
              {
                   finish();
-                  Intent moveToHoe=new Intent(  StartActivity.this,MainActivity.class);
+                  Intent moveToHoe=new Intent(  StartActivity.this,Eventhelper.class);
                   startActivity(moveToHoe);
               }
             }
