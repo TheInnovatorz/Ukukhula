@@ -1,4 +1,4 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula.admin_profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;

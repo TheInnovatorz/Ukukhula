@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                pd.dismiss();
+                pd.dismiss();
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Log.i(" AVIWE", dataSnapshot.toString());
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-//                pd.dismiss();
+                pd.dismiss();
 
             }
         });
