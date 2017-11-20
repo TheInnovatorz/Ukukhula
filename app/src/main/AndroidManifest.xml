@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".learner.LearnrsActivity"
+            android:name=".SplashActivity"
             android:label="UkuKhula"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,26 +21,32 @@
         </activity>
         <activity
             android:name=".AdminProfile.ProfileActivity"
-            android:label="Admin Profile" />
-        <activity android:name=".StartActivity"></activity>
+            android:label="My Profile"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".StartActivity" />
+        <activity android:name=".Groups.RegistedKidsActivity"></activity>
         <activity
             android:name=".AdminProfile.Register"
             android:label="Admin Register" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".notifications.Eventhelper"
             android:label="Notifications" />
         <activity
+            android:name=".notifications.EventActivity"
+            android:label="Notifications" />
+        <activity
             android:name=".School.SchoolRegister"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="Home" />
-
         <activity
             android:name=".gallery.ImageDisplayActivity"
-            android:label="Gallery"></activity>
+            android:label="Gallery" />
         <activity
             android:name=".learner.RegisterLearner"
             android:label="Register Learner" />
-
         <activity
             android:name=".gallery.ViewImageActivity"
             android:label="Gallery" />
@@ -48,13 +54,25 @@
             android:name=".Groups.ClassesActivitys"
             android:label="School Groups" />
         <activity
+            android:name=".Groups.ClassesActivitysList"
+            android:label="School Groups" />
+        <activity
             android:name=".gallery.GallaryActivity"
             android:label="School Groups" />
         <activity
             android:name=".Teacher.TeacherActivity"
             android:label="Registered Teachers" />
+
+        <activity android:name=".learner.LearnrsActivity"
+            android:label="Registered Learners"/>
+
         <activity android:name=".Teacher.RegisterActivity" />
-        <activity android:name=".gallery.ZoomActivity"></activity>
+
+        <activity android:name=".gallery.ZoomActivity" />
+
+        <activity android:name=".learner.ViewLearnerActivity" />
+
+        <activity android:name=".Groups.AddGroupsActivity"></activity>
     </application>
 
 </manifest>

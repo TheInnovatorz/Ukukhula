@@ -22,44 +22,31 @@
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"/>
 
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText"-->
-        <!--android:hint="name"/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText2"-->
-        <!--android:hint="Surname"/>-->
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:id="@+id/edtEmail"
         android:layout_marginBottom="20dp"
+        android:paddingLeft="10dp"
         android:background="@drawable/round"
-        android:hint="Email Adress"/>
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText4"-->
-        <!--android:hint="Gender"/>-->
+        android:hint="Email Address"/>
 
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/edtPassword"
         android:layout_height="45dp"
-        android:hint="password"
+        android:hint="Password"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/round"
         />
 
-
-
-
+    <Spinner
+        android:id="@+id/roles"
+        android:entries="@array/roles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></Spinner>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

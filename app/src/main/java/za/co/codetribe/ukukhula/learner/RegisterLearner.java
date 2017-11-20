@@ -8,13 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,17 +36,18 @@ import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 public class RegisterLearner extends AppCompatActivity {
 
-    EditText names, surname, allegies, date_of_birth, parentName, contacts, gender, className, favouriteMeal;
+    EditText names, surname, allegies, date_of_birth, parentName, contacts,className, favouriteMeal;
     String name, surnam, allegie, dateofbirth, parentNam, contact, gende, classNam, favouriteMea;
 
     CircleImageView profilePic;
     ImageView profileImgPallete;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    Spinner gender;
 
 
     //authntification fields
 
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,rDatabase;
     FirebaseAuth mAuth;
     FirebaseUser user;
     // FirebaseAuth.AuthStateListener mAuthListerner;
@@ -65,6 +69,13 @@ public class RegisterLearner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kidsprofile);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        Log.i(" mlab",user.getUid());
+
+
+
 
         Toast.makeText(getBaseContext(), "I was clicked", Toast.LENGTH_LONG).show();
         //BACK ARROW
@@ -89,12 +100,19 @@ public class RegisterLearner extends AppCompatActivity {
         names = (EditText) findViewById(R.id.editname);
         surname = (EditText) findViewById(R.id.editsurname);
         allegies = (EditText) findViewById(R.id.editallergies);
-        gender = (EditText) findViewById(R.id.editgender);
+        gender = (Spinner) findViewById(R.id.editgender);
         parentName = (EditText) findViewById(R.id.editparentName);
         contacts = (EditText) findViewById(R.id.editContacts);
         className = (EditText) findViewById(R.id.editClassName);
         date_of_birth = (EditText) findViewById(R.id.editdate);
         favouriteMeal = (EditText) findViewById(R.id.editfavmeal);
+
+
+        //spinner gender
+
+        ArrayAdapter<CharSequence> adapter=  ArrayAdapter.createFromResource(this,R.array.gender,android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        gender.setAdapter(adapter);
 
         //select date
         date_of_birth.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +135,7 @@ public class RegisterLearner extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int date) {
 
                 month=month+1;
-                String selected= month + "/" + date +"  " + year;
+                String selected= month + "/" + date +" / " + year;
 
                 date_of_birth.setText(selected);
             }
@@ -135,8 +153,8 @@ public class RegisterLearner extends AppCompatActivity {
             //LearnerProfile parentProfile =
 
 
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Children");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Children").child(user.getUid());
+        rDatabase = FirebaseDatabase.getInstance().getReference().child("RegistedChildren");
 //            database.addListenerForSingleValueEvent(new ValueEventListener() {
 //                @Override
 //                public void onDataChange(DataSnapshot dataSnapshot) {
@@ -155,19 +173,19 @@ public class RegisterLearner extends AppCompatActivity {
 //                        contacts.setText(parentProfile.getContacts());
 
 
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addLearners();
-
-                Toast.makeText(RegisterLearner.this, " data is saving", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(RegisterLearner.this, LearnrsActivity.class);
-                startActivity(intent);
-            }
-
-
-        });
+//
+//        save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addLearners();
+//
+//                Toast.makeText(RegisterLearner.this, " data is saving", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(RegisterLearner.this, LearnrsActivity.class);
+//                startActivity(intent);
+//            }
+//
+//
+//        });
 
 
     }
@@ -233,7 +251,8 @@ public class RegisterLearner extends AppCompatActivity {
         parentNam = parentName.getText().toString();
         dateofbirth = date_of_birth.getText().toString();
         contact = contacts.getText().toString();
-        gende = gender.getText().toString();
+//        gende = gender.getText().toString();
+        String gende= gender.getSelectedItem().toString();
         classNam = className.getText().toString();
         favouriteMea = favouriteMeal.getText().toString();
 
@@ -248,6 +267,7 @@ public class RegisterLearner extends AppCompatActivity {
 
 
         mDatabase.push().setValue(parentProfile);
+        rDatabase.push().setValue(parentProfile);
 
         Toast.makeText(RegisterLearner.this, "data saved ", Toast.LENGTH_LONG).show();
     }

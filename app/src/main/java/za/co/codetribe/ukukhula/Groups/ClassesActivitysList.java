@@ -2,6 +2,7 @@ package za.co.codetribe.ukukhula.Groups;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -25,23 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import za.co.codetribe.ukukhula.R;
-import za.co.codetribe.ukukhula.learner.LearnerProfile;
-import za.co.codetribe.ukukhula.learner.LearnrsActivity;
-import za.co.codetribe.ukukhula.learner.ViewLearnerActivity;
 import za.co.codetribe.ukukhula.notifications.EventActivity;
-import za.co.codetribe.ukukhula.notifications.EventAdapter;
 import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 import static android.app.DatePickerDialog.OnDateSetListener;
-import static android.media.CamcorderProfile.get;
 import static za.co.codetribe.ukukhula.R.id.gName;
 
-/**
- * Created by Codetribe on 2017/09/01.
- */
 
 
-public class ClassesActivitys extends AppCompatActivity {
+public class ClassesActivitysList extends AppCompatActivity {
 
     EditText grpName, grpTeacher;
     String eName, eTeacher;
@@ -50,7 +43,7 @@ public class ClassesActivitys extends AppCompatActivity {
     Boolean val = true;
     private static final String TAG = " HJHJKHJJH";
 
-
+    FloatingActionButton add;
     FirebaseDatabase firebaseData;
     DatabaseReference roofdef, demodef;
     ListView listview;
@@ -68,29 +61,24 @@ public class ClassesActivitys extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.done:
-                addGroup();
-                Intent intent = new Intent(ClassesActivitys.this, ClassesActivitysList.class);
-                startActivity(intent);
-        }
-                finish();
-                return super.onOptionsItemSelected(item);
-        }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
 
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classes);
+        setContentView(R.layout.activity_classlist);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         save = (Button) findViewById(R.id.saveData);
@@ -107,84 +95,92 @@ public class ClassesActivitys extends AppCompatActivity {
 //        save.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//
-//            }
-//        });
-
-//
-//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Group testData =  groupList.get(i);
-//                Log.i(" Dimplezzzzz ", testData.getGroupNane() + testData.getGroupTeacher());
-//
-//                Intent intent=new Intent(ClassesActivitys.this, RegistedKidsActivity.class);
-//                intent.putExtra("groups",testData);
-//                startActivity(intent);
-//                //Toast.makeText(context, "I'm inside the list " , Toast.LENGTH_LONG).show();
-//
-//
+//                addEvent();
 //            }
 //        });
 
 
-    }
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Group testData =  groupList.get(i);
+                Log.i(" Dimplezzzzz ", testData.getGroupNane() + testData.getGroupTeacher());
 
-    private void addGroup() {
-        Group group = new Group();
-        eName = grpName.getText().toString().trim();
-        eTeacher = grpTeacher.getText().toString().trim();
-
-
-//        if (!TextUtils.isEmpty(eName)) {
-//            event.setEventName(eName);
-
-
-//        } else {
-//            Toast.makeText(ClassesActivitys.this, "Event not saved ", Toast.LENGTH_LONG).show();
-//        }
+                Intent intent=new Intent(ClassesActivitysList.this, RegistedKidsActivity.class);
+                intent.putExtra("groups",testData);
+                startActivity(intent);
+                //Toast.makeText(context, "I'm inside the list " , Toast.LENGTH_LONG).show();
 
 
-//        if (!TextUtils.isEmpty(eDescription)) {
-//            event.setEventDiscription(eDescription);
-//
-//
-//        } else {
-//            Toast.makeText(ClassesActivitys.this, "no desc", Toast.LENGTH_LONG).show();
-//        }
-//
-//
-//        if (!TextUtils.isEmpty(eDate)) {
-//            event.setDate(eDate);
-//
-//
-//        } else {
-//            Toast.makeText(ClassesActivitys.this, "NO DATE", Toast.LENGTH_LONG).show();
-//        }
-
-
-        Group groups = new Group(eName, eTeacher);
-        mDatabase.push().setValue(groups);
-
-        grpName.setText(" ");
-        grpTeacher.setText(" ");
-
-
-        try {
-
-
-        } catch (Exception e) {
-            val = false;
-        } finally {
-            if (val) {
-                Toast.makeText(ClassesActivitys.this, "group saved ", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(ClassesActivitys.this, "group not saved ", Toast.LENGTH_LONG).show();
             }
-        }
+        });
 
+        add = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ClassesActivitysList.this, ClassesActivitys.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
+//    private void addGroup() {
+//        Group group = new Group();
+//        eName = grpName.getText().toString().trim();
+//        eTeacher = grpTeacher.getText().toString().trim();
+
+//
+////        if (!TextUtils.isEmpty(eName)) {
+////            event.setEventName(eName);
+//
+//
+////        } else {
+////            Toast.makeText(ClassesActivitys.this, "Event not saved ", Toast.LENGTH_LONG).show();
+////        }
+//
+//
+////        if (!TextUtils.isEmpty(eDescription)) {
+////            event.setEventDiscription(eDescription);
+////
+////
+////        } else {
+////            Toast.makeText(ClassesActivitys.this, "no desc", Toast.LENGTH_LONG).show();
+////        }
+////
+////
+////        if (!TextUtils.isEmpty(eDate)) {
+////            event.setDate(eDate);
+////
+////
+////        } else {
+////            Toast.makeText(ClassesActivitys.this, "NO DATE", Toast.LENGTH_LONG).show();
+////        }
+//
+//
+//        Group groups = new Group(eName, eTeacher);
+//        mDatabase.push().setValue(groups);
+//
+//        grpName.setText(" ");
+//        grpTeacher.setText(" ");
+//
+//
+//        try {
+//
+//
+//        } catch (Exception e) {
+//            val = false;
+//        } finally {
+//            if (val) {
+//                Toast.makeText(ClassesActivitysList.this, "group saved ", Toast.LENGTH_LONG).show();
+//            } else {
+//                Toast.makeText(ClassesActivitysList.this, "group not saved ", Toast.LENGTH_LONG).show();
+//            }
+//        }
+
+
 
 
     //fetch
@@ -207,8 +203,8 @@ public class ClassesActivitys extends AppCompatActivity {
 
                 }
 
-                GroupAdapter adapter = new GroupAdapter(ClassesActivitys.this, groupList);
-//                listview.setAdapter(adapter);
+                GroupAdapter adapter = new GroupAdapter(ClassesActivitysList.this, groupList);
+                listview.setAdapter(adapter);
 
             }
 

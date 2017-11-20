@@ -8,32 +8,32 @@
     android:weightSum="1">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_marginBottom="14dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="105dp"-->
+        <!--android:layout_marginBottom="14dp">-->
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profilepicture"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="25dp"
-            android:gravity="center" />
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:id="@+id/profilepicture"-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="120dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginBottom="25dp"-->
+            <!--android:gravity="center" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/profilepicture"
-            android:layout_gravity="start"
-            android:paddingLeft="22dp"
-            android:text=" Fact File    "
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignStart="@+id/profilepicture"-->
+            <!--android:layout_gravity="start"-->
+            <!--android:paddingLeft="22dp"-->
+            <!--android:text=" Fact File    "-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textStyle="bold" />-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
 
     <ScrollView
@@ -46,6 +46,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:weightSum="2">
 
             <TextView
@@ -56,105 +57,123 @@
                 android:text="Child"
                 android:textSize="30sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Class Name" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Class Name" />-->
 
             <EditText
                 android:id="@+id/editClassName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
-                android:background="@drawable/round" />
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/round"
+                android:hint="Class Name"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Surname" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Surname" />-->
 
             <EditText
                 android:id="@+id/editsurname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
-                android:background="@drawable/round" />
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/round"
+                android:hint="Surname"/>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Full Name(s)" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Full Name(s)" />-->
 
             <EditText
                 android:id="@+id/editname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
-                android:background="@drawable/round" />
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/round"
+                android:hint="Full Name(s)"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Gender" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Gender" />-->
 
-            <EditText
+            <Spinner
                 android:id="@+id/editgender"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_gravity="start"
+               android:entries="@array/gender"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/round" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Date of Birth" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Date of Birth" />-->
 
             <EditText
                 android:id="@+id/editdate"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
-                android:background="@drawable/round" />
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round"
+                android:paddingLeft="10dp"
+                android:hint="Date of Birth"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Favourite Meal" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Favourite Meal" />-->
 
             <EditText
                 android:id="@+id/editfavmeal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
-                android:background="@drawable/round" />
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/round"
+                android:hint="Favourite Meal"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Allergies" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Allergies" />-->
 
             <EditText
                 android:id="@+id/editallergies"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:paddingLeft="10dp"
                 android:layout_gravity="start"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/round"
-                android:inputType="text" />
+                android:hint="Allergies"/>
 
 
             <TextView
@@ -166,48 +185,53 @@
                 android:textSize="20sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Name" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Name" />-->
 
             <EditText
                 android:id="@+id/editparentName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
+                android:hint="Parent's Name"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/round"
                 android:inputType="textPersonName" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:paddingLeft="22dp"
-                android:text="Contact" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:text="Contact" />-->
 
             <EditText
                 android:id="@+id/editContacts"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="start"
+                android:hint="Parent's Contacts"
+                android:paddingLeft="10dp"
                 android:background="@drawable/round"
                 android:inputType="textPersonName" />
 
-            <Button
-                android:id="@+id/save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:alpha="0.90"
-                android:onClick="Save"
-                android:padding="16dp"
-                android:text="SAVE"
-                android:textAllCaps="true"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
+            <!--<Button-->
+                <!--android:id="@+id/save"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:alpha="0.90"-->
+                <!--android:onClick="Save"-->
+                <!--android:padding="16dp"-->
+                <!--android:text="SAVE"-->
+                <!--android:textAllCaps="true"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="16sp" />-->
 
         </LinearLayout>
     </ScrollView>

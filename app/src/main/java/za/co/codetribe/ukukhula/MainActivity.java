@@ -29,6 +29,7 @@ import java.util.List;
 
 import za.co.codetribe.ukukhula.AdminProfile.ProfileActivity;
 import za.co.codetribe.ukukhula.Groups.ClassesActivitys;
+import za.co.codetribe.ukukhula.Groups.ClassesActivitysList;
 import za.co.codetribe.ukukhula.School.SchoolRegister;
 import za.co.codetribe.ukukhula.Teacher.RegisterActivity;
 import za.co.codetribe.ukukhula.Teacher.TeacherActivity;
@@ -37,6 +38,7 @@ import za.co.codetribe.ukukhula.gallery.ImageAdapter;
 import za.co.codetribe.ukukhula.gallery.ImageDisplayActivity;
 import za.co.codetribe.ukukhula.gallery.ImagePojo;
 import za.co.codetribe.ukukhula.learner.LearnrsActivity;
+import za.co.codetribe.ukukhula.notifications.EventActivity;
 import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 public class MainActivity extends AppCompatActivity
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     ListView listView;
 
     ProgressDialog pd;
+    FirebaseAuth auth;
     FirebaseUser firebaserUser;
     DatabaseReference userRef;
     User user;
@@ -62,7 +65,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+
+
         firebaserUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        Log.i(" mlabb",firebaserUser.getUid());
 
 
         listView = (ListView) findViewById(R.id.listImages);
@@ -73,7 +80,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         imgList = new ArrayList<>();
@@ -91,16 +98,14 @@ public class MainActivity extends AppCompatActivity
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     user = dataSnapshot.getValue(User.class);
                     Log.i("Dimplez" , dataSnapshot.toString());
+                    if (dataSnapshot.getValue() != null ) {
+                        if ("admin".equals(user.getUser_role()) || "teacher".equals(user.getUser_role())) {
+                            navigationView.getMenu().removeItem(R.id.nav_Children);
+                        } else {
+                            navigationView.getMenu().removeItem(R.id.nav_teacher);
 
-                    if("Admin/Teacher".equals(user.getUser_role()))
-                    {
-
-                    }
-                    else
-                    {
-                        navigationView.getMenu().removeItem(R.id.nav_teacher);
-                        navigationView.getMenu().removeItem(R.id.nav_Children);
-                        navigationView.getMenu().removeItem(R.id.nav_classes);
+                            navigationView.getMenu().removeItem(R.id.nav_classes);
+                        }
                     }
                 }
 
@@ -117,31 +122,31 @@ public class MainActivity extends AppCompatActivity
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("imagess");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 //                pd.dismiss();
-//
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Log.i(" AVIWE", dataSnapshot.toString());
-//                    ImagePojo imagePojo = (ImagePojo) dataSnapshot1.getValue(ImagePojo.class);
-//                    imgList.add(imagePojo);
-//
-//                }
-//
-//
-//                ImageAdapter adapter = new ImageAdapter(MainActivity.this, R.layout.activity_gallarylist, imgList);
-//                listView.setAdapter(adapter);
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Log.i(" AVIWE", dataSnapshot.toString());
+                    ImagePojo imagePojo = (ImagePojo) dataSnapshot1.getValue(ImagePojo.class);
+                    imgList.add(imagePojo);
+
+                }
+
+
+                ImageAdapter adapter = new ImageAdapter(MainActivity.this, R.layout.activity_gallarylist, imgList);
+                listView.setAdapter(adapter);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 //                pd.dismiss();
-//
-//            }
-//        });
+
+            }
+        });
 //
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -212,10 +217,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_classes) {
-            Intent intent = new Intent(MainActivity.this, ClassesActivitys.class);
+            Intent intent = new Intent(MainActivity.this, ClassesActivitysList.class);
             startActivity(intent);
 
         } else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, StartActivity.class);
             startActivity(intent);
 

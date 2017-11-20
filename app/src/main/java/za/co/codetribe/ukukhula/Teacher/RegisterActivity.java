@@ -76,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registerteachers);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Name,Surname,Email,password,Address,Contacts,Qualifications,gender
         Name = (EditText) findViewById(R.id.editname);
@@ -107,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
-        mRef = mFirebaseDatabase.getReference().child("Teachers");
+        mRef = mFirebaseDatabase.getReference().child("Users");
         //spinner
         mGroupRef = mFirebaseDatabase.getReference().child("Group");
 
@@ -360,31 +361,31 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
-}
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        switch (item.getItemId() )
-//        {
-//            case R.id.add:
-//                Intent intent = new Intent(RegisterActivity.this,RegisterActivity.class);
-//                startActivity(intent);
-//
-//        }
-//        finish();
-//        return super.onOptionsItemSelected(item);
-//    }
-//
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId() )
+        {
+            case R.id.done:
+                Intent intent = new Intent(RegisterActivity.this,TeacherActivity.class);
+                startActivity(intent);
+
+        }
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+
 //    //menu
 //
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    }
 
 //    @Override
 //    protected void onStop() {
