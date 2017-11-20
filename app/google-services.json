@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "273717898419-8nq3a3vql97e942v9k882nve63vrnohd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "za.co.codetribe.ukukhula",
+            "certificate_hash": "5b208af1b33e33454e7c405aeae091eba7fde0c8"
+          }
+        },
+        {
           "client_id": "273717898419-e4mjvomjtknf0oma1ifmu20g0m48nvhc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

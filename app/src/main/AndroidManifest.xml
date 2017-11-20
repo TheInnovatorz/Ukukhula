@@ -20,13 +20,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdminProfile.ProfileActivity"
+            android:name=".admin_profile.ProfileActivity"
             android:label="My Profile"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".StartActivity" />
-        <activity android:name=".Groups.RegistedKidsActivity"></activity>
+        <activity android:name=".Groups.RegistedKidsActivity" />
         <activity
-            android:name=".AdminProfile.Register"
+            android:name=".admin_profile.RegisterActivity"
+            android:label="Admin Register" /> <activity
+            android:name=".OldRegister"
             android:label="Admin Register" />
         <activity
             android:name=".MainActivity"
@@ -62,7 +64,6 @@
         <activity
             android:name=".Teacher.TeacherActivity"
             android:label="Registered Teachers" />
-        <activity android:name=".learner.LearnrsActivity" />
 
         <activity android:name=".learner.LearnrsActivity"
             android:label="Registered Learners"/>
@@ -72,11 +73,7 @@
         <activity android:name=".learner.ViewLearnerActivity" />
         <activity android:name=".Groups.AddGroupsActivity"></activity>
 
-        <activity android:name=".gallery.ZoomActivity" />
 
-        <activity android:name=".learner.ViewLearnerActivity" />
-
-        <activity android:name=".Groups.AddGroupsActivity"></activity>
     </application>
 
 </manifest>

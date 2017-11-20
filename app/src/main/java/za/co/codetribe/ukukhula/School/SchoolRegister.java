@@ -190,7 +190,7 @@ public class SchoolRegister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent( SchoolRegister.this, ProfileActivity.class );
+                Intent intent = new Intent( SchoolRegister.this, OldProfileActivity.class );
                 startActivity( intent );
             }
         });

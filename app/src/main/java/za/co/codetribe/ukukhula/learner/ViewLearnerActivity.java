@@ -11,9 +11,9 @@ import za.co.codetribe.ukukhula.R;
 public class ViewLearnerActivity extends AppCompatActivity {
 
     EditText  className,names, surname,date_of_birth,allegies,parentName, contacts,  favouriteMeal;
-    LearnerProfile object;
+    //LearnerProfile object;
     Spinner gender;
-    EditText  className,names, surname, gender,date_of_birth,allegies,parentName, contacts,  favouriteMeal;
+    //EditText  className,names, surname, gender,date_of_birth,allegies,parentName, contacts,  favouriteMeal;
     LearnerProfile object;
 
     @Override
@@ -34,7 +34,6 @@ public class ViewLearnerActivity extends AppCompatActivity {
         names = (EditText) findViewById(R.id.editname);
         surname = (EditText) findViewById(R.id.editsurname);
         allegies = (EditText) findViewById(R.id.editallergies);
-        gender = (EditText) findViewById(R.id.editgender);
         gender = (Spinner) findViewById(R.id.editgender);
         parentName = (EditText) findViewById(R.id.editparentName);
         contacts = (EditText) findViewById(R.id.editContacts);
@@ -47,7 +46,6 @@ public class ViewLearnerActivity extends AppCompatActivity {
         names.setText(object.getNames());
         surname.setText(object.getSurname());
         className.setText(object.getClassName());
-        gender.setText(object.getGender());
 //        gender.setText(object.getGender());
         String gende= gender.getSelectedItem().toString();
         parentName.setText(object.getParentName());

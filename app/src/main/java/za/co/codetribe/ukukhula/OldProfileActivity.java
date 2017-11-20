@@ -48,7 +48,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class OldProfileActivity extends AppCompatActivity {
 
     EditText name, surname, address, gender, contacts, parentEmail ,role,qualification;
     TextView dateSelected,dateofbirth;
@@ -120,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
                 int day=calendar.get(Calendar.DAY_OF_MONTH);
                 int month=calendar.get(Calendar.MONTH);
 
-                DatePickerDialog dialog= new DatePickerDialog(ProfileActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
+                DatePickerDialog dialog= new DatePickerDialog(OldProfileActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
                 dialog.show();
 
@@ -183,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
         } else {
-            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+            Intent intent = new Intent(OldProfileActivity.this, MainActivity.class);
             startActivity(intent);
         }
         upload = (FloatingActionButton) findViewById(R.id.floatingActionButton);
@@ -264,7 +264,7 @@ public class ProfileActivity extends AppCompatActivity {
             childUpdates.put("/users/" + userId, parentProfileValues);
             mDatabase.updateChildren(childUpdates);
 
-            Toast.makeText(ProfileActivity.this, "data saved ", Toast.LENGTH_LONG).show();
+            Toast.makeText(OldProfileActivity.this, "data saved ", Toast.LENGTH_LONG).show();
         }
 
         try {
@@ -323,7 +323,7 @@ public class ProfileActivity extends AppCompatActivity {
         {
             case R.id.done:
                 addLearners();
-                Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
+                Intent intent = new Intent(OldProfileActivity.this,MainActivity.class);
                 startActivity(intent);
 
         }

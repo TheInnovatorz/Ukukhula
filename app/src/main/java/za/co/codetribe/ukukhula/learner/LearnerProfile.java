@@ -3,16 +3,6 @@ package za.co.codetribe.ukukhula.learner;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.firebase.database.Exclude;
-import com.google.firebase.database.Transaction;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static android.R.attr.name;
-import static android.R.attr.type;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
 /**
  * Created by Codetribe on 2017/10/25.
  */
@@ -175,7 +165,7 @@ public class LearnerProfile implements Parcelable {
         parcel.writeString(contacts);
         parcel.writeString(date_of_birth);
         parcel.writeString(favouriteMeal);
-        parcel.writeString(Gender);
+        parcel.writeString(gender);
         parcel.writeString(allegies);
         parcel.writeString(parentName);
         parcel.writeString(className);

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,12 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Set;
-
-import za.co.codetribe.ukukhula.AdminProfile.Register;
-
-import static android.R.attr.value;
-import static android.os.Build.VERSION_CODES.M;
+import za.co.codetribe.ukukhula.admin_profile.RegisterActivity;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -124,7 +118,7 @@ public class StartActivity extends AppCompatActivity {
         }
 //        progressDialog.setMessage("Registering user......");
 //        progressDialog.show();
-        Toast.makeText(getApplicationContext(), "i am succesful " , Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), "i am succesful " , Toast.LENGTH_LONG).show();
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -137,7 +131,7 @@ public class StartActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "User not successful registered...please try again ", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "User not successful registered...please try again ", Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -153,16 +147,16 @@ public class StartActivity extends AppCompatActivity {
 
 
     public void register(View view) {
-        Intent intent = new Intent(StartActivity.this, Register.class);
+        Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
     public void passwordForget(View view) {
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
     public void loginAdmin(View view) {
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 }

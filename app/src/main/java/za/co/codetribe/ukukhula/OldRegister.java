@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Register extends AppCompatActivity {
+public class OldRegister extends AppCompatActivity {
 
 
     Button registerButton;
@@ -120,11 +120,11 @@ public class Register extends AppCompatActivity {
                             childUpdates.put("/users/" + userId, parentProfileValues);
                             mDatabase.updateChildren(childUpdates);
 
-                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            Intent intent = new Intent(OldRegister.this, MainActivity.class);
                             startActivity(intent);
 
                             /*
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Register.this);
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(OldRegister.this);
                             builder1.setMessage("Please update your personal details now or later?");
                             builder1.setCancelable(true);
 
@@ -133,7 +133,7 @@ public class Register extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
 
-                                            Intent intent = new Intent(Register.this, OldProfileActivity.class);
+                                            Intent intent = new Intent(OldRegister.this, OldProfileActivity.class);
                                             startActivity(intent);
 
                                             // dialog.cancel();
@@ -146,7 +146,7 @@ public class Register extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int id) {
 
 
-                                            Intent intent = new Intent(Register.this, MainActivity.class);
+                                            Intent intent = new Intent(OldRegister.this, MainActivity.class);
                                             startActivity(intent);
 
                                             //dialog.cancel();

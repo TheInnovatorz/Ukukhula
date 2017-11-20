@@ -32,7 +32,7 @@ import za.co.codetribe.ukukhula.R;
 import za.co.codetribe.ukukhula.User;
 
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
 
     Button registerButton;
@@ -124,7 +124,7 @@ public class Register extends AppCompatActivity {
                             childUpdates.put("/users/" + userId, parentProfileValues);
                             mDatabase.updateChildren(childUpdates);
 
-                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
 
                             /*

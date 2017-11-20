@@ -3,16 +3,13 @@ package za.co.codetribe.ukukhula;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -27,18 +24,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.codetribe.ukukhula.AdminProfile.ProfileActivity;
-import za.co.codetribe.ukukhula.Groups.ClassesActivitys;
 import za.co.codetribe.ukukhula.Groups.ClassesActivitysList;
 import za.co.codetribe.ukukhula.School.SchoolRegister;
-import za.co.codetribe.ukukhula.Teacher.RegisterActivity;
 import za.co.codetribe.ukukhula.Teacher.TeacherActivity;
-import za.co.codetribe.ukukhula.gallery.GallaryActivityParent;
+import za.co.codetribe.ukukhula.admin_profile.ProfileActivity;
 import za.co.codetribe.ukukhula.gallery.ImageAdapter;
 import za.co.codetribe.ukukhula.gallery.ImageDisplayActivity;
 import za.co.codetribe.ukukhula.gallery.ImagePojo;
 import za.co.codetribe.ukukhula.learner.LearnrsActivity;
-import za.co.codetribe.ukukhula.notifications.EventActivity;
 import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 public class MainActivity extends AppCompatActivity
@@ -50,7 +43,6 @@ public class MainActivity extends AppCompatActivity
     ListView listView;
 
     ProgressDialog pd;
-    FirebaseAuth auth;
     FirebaseUser firebaserUser;
     DatabaseReference userRef;
     User user;
@@ -64,13 +56,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-
-
-
         firebaserUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        Log.i(" mlabb",firebaserUser.getUid());
-
 
         listView = (ListView) findViewById(R.id.listImages);
 
@@ -85,10 +71,6 @@ public class MainActivity extends AppCompatActivity
 
         imgList = new ArrayList<>();
 
-//        pd = new ProgressDialog(this);
-//        pd.setMessage(" please wait ....");
-//        pd.show();
-
         if( firebaserUser != null) {
             String uuid = firebaserUser.getUid();
 
@@ -100,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                     Log.i("Dimplez" , dataSnapshot.toString());
                     if (dataSnapshot.getValue() != null ) {
                         if ("admin".equals(user.getUser_role()) || "teacher".equals(user.getUser_role())) {
-                            navigationView.getMenu().removeItem(R.id.nav_Children);
+                            navigationView.getMenu().removeItem(R.id.nav_children);
                         } else {
                             navigationView.getMenu().removeItem(R.id.nav_teacher);
 
@@ -125,8 +107,6 @@ public class MainActivity extends AppCompatActivity
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                pd.dismiss();
-
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Log.i(" AVIWE", dataSnapshot.toString());
                     ImagePojo imagePojo = (ImagePojo) dataSnapshot1.getValue(ImagePojo.class);
@@ -134,11 +114,8 @@ public class MainActivity extends AppCompatActivity
 
                 }
 
-
                 ImageAdapter adapter = new ImageAdapter(MainActivity.this, R.layout.activity_gallarylist, imgList);
                 listView.setAdapter(adapter);
-
-
             }
 
             @Override
@@ -204,7 +181,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, TeacherActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_Children) {
+        } else if (id == R.id.nav_children) {
             Intent intent = new Intent(MainActivity.this, LearnrsActivity.class);
             startActivity(intent);
 

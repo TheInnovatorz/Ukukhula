@@ -30,26 +30,23 @@
         android:id="@+id/imageButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_person_black_24dp" />
-         />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo" />
+    />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/role"
+        android:layout_alignEnd="@+id/imageButton"
         android:clickable="true"
         android:elevation="8dp"
         app:fabSize="mini"
-        app:fabSize="mini"
-        android:elevation="4dp"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        android:layout_above="@+id/role"
-        android:layout_alignEnd="@+id/imageButton" />
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <TextView
         android:id="@+id/role"
@@ -66,9 +63,6 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="150dp"
-        android:id="@+id/linearLayout4"
         android:layout_marginTop="200dp"
         android:orientation="vertical">
 
@@ -89,14 +83,14 @@
                     android:id="@+id/editname"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.55"
                     android:background="@drawable/round"
                     android:ems="10"
-                    android:paddingLeft="10dp"
                     android:hint="Name"
                     android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -105,10 +99,10 @@
                     android:layout_height="46dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round"
-                    android:paddingLeft="10dp"
                     android:ems="10"
                     android:hint="Surname"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
 
                 <EditText
                     android:id="@+id/editaddress"
@@ -116,10 +110,10 @@
                     android:layout_height="46dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round"
-                    android:paddingLeft="10dp"
                     android:ems="10"
                     android:hint="Address"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
 
 
                 <EditText
@@ -128,10 +122,10 @@
                     android:layout_height="46dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round"
-                    android:paddingLeft="10dp"
                     android:ems="10"
                     android:hint="Date of birth"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
 
 
                 <EditText
@@ -140,42 +134,31 @@
                     android:layout_height="46dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round"
-                    android:paddingLeft="10dp"
                     android:ems="10"
                     android:hint="Cellphone number"
-                    android:inputType="textPersonName" />
-        <EditText
-            android:id="@+id/editContacts"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:ems="10"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:hint="Cellphone number" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
 
                 <EditText
                     android:id="@+id/editemail"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:ems="10"
-                    android:textStyle="italic"
-                    android:inputType="textPersonName"
                     android:hint="Email"
-             />
-
+                    android:inputType="textPersonName"
+                    android:textStyle="italic" />
 
 
                 <EditText
                     android:id="@+id/editgender"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:ems="10"
-                    android:paddingLeft="10dp"
-                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
+                    android:ems="10"
                     android:hint="Email"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textStyle="italic" />
 
 
                 <Spinner
@@ -213,14 +196,14 @@
                     android:id="@+id/editRole"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/round"
-                    android:paddingLeft="10dp"
                     android:ems="10"
                     android:hint="Role"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textStyle="italic" />
 
                 <!--<EditText-->
                 <!--android:id="@+id/edit"-->
@@ -238,24 +221,23 @@
                     android:id="@+id/editQualifications"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round"
                     android:ems="10"
-                    android:paddingLeft="10dp"
                     android:hint="Qualification"
-                    android:inputType="textPersonName" />
-
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textStyle="italic" />
 
 
                 <!--<Button-->
-                    <!--android:id="@+id/saveData"-->
-                    <!--android:layout_width="346dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="#AD1457"-->
-                    <!--android:onClick="save"-->
-                    <!--android:text="UPDATE PROFILE"-->
-                    <!--android:textColor="#fff"-->
+                <!--android:id="@+id/saveData"-->
+                <!--android:layout_width="346dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#AD1457"-->
+                <!--android:onClick="save"-->
+                <!--android:text="UPDATE PROFILE"-->
+                <!--android:textColor="#fff"-->
 
                 <!--android:layout_gravity="center_horizontal"/>-->
 
@@ -273,7 +255,6 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 
 </RelativeLayout>
 
