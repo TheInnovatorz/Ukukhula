@@ -1,21 +1,17 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula.admin_profile;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +30,6 @@ import java.util.Map;
 import za.co.codetribe.ukukhula.MainActivity;
 import za.co.codetribe.ukukhula.R;
 import za.co.codetribe.ukukhula.User;
-
-import static android.R.attr.type;
 
 
 public class Register extends AppCompatActivity {
@@ -134,7 +128,7 @@ public class Register extends AppCompatActivity {
                             startActivity(intent);
 
                             /*
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Register.this);
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(OldRegister.this);
                             builder1.setMessage("Please update your personal details now or later?");
                             builder1.setCancelable(true);
 
@@ -143,7 +137,7 @@ public class Register extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
 
-                                            Intent intent = new Intent(Register.this, ProfileActivity.class);
+                                            Intent intent = new Intent(OldRegister.this, OldProfileActivity.class);
                                             startActivity(intent);
 
                                             // dialog.cancel();
@@ -156,7 +150,7 @@ public class Register extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int id) {
 
 
-                                            Intent intent = new Intent(Register.this, MainActivity.class);
+                                            Intent intent = new Intent(OldRegister.this, MainActivity.class);
                                             startActivity(intent);
 
                                             //dialog.cancel();

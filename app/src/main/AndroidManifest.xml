@@ -35,7 +35,11 @@
             android:name=".notifications.Eventhelper"
             android:label="Notifications" />
         <activity
+            android:name=".notifications.EventActivity"
+            android:label="Notifications" />
+        <activity
             android:name=".School.SchoolRegister"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="Home" />
         <activity
             android:name=".gallery.ImageDisplayActivity"
@@ -50,15 +54,28 @@
             android:name=".Groups.ClassesActivitys"
             android:label="School Groups" />
         <activity
+            android:name=".Groups.ClassesActivitysList"
+            android:label="School Groups" />
+        <activity
             android:name=".gallery.GallaryActivity"
             android:label="School Groups" />
         <activity
             android:name=".Teacher.TeacherActivity"
             android:label="Registered Teachers" />
         <activity android:name=".learner.LearnrsActivity" />
+
+        <activity android:name=".learner.LearnrsActivity"
+            android:label="Registered Learners"/>
+
         <activity android:name=".Teacher.RegisterActivity" />
         <activity android:name=".gallery.ZoomActivity" />
         <activity android:name=".learner.ViewLearnerActivity" />
+        <activity android:name=".Groups.AddGroupsActivity"></activity>
+
+        <activity android:name=".gallery.ZoomActivity" />
+
+        <activity android:name=".learner.ViewLearnerActivity" />
+
         <activity android:name=".Groups.AddGroupsActivity"></activity>
     </application>
 

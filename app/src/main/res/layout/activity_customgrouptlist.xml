@@ -13,10 +13,9 @@
        style="@style/Base.TextAppearance.AppCompat.Body2"
         android:id="@+id/eventName"
         android:textSize="20dp"
-        android:background="#cfd8dc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ejjhhh"
+
 
     />
 
@@ -24,8 +23,7 @@
         android:id="@+id/eventDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#cfd8dc"
-        android:hint="ejjhhh"
+
         />
     <!--<DatePicker-->
         <!--android:layout_width="match_parent"-->

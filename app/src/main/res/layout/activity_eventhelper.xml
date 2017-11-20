@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="za.co.codetribe.ukukhula.notifications.Eventhelper">
+
+
+
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingLeft="18dp"-->
+            <!--android:paddingRight="18dp"-->
+            <!--android:weightSum="1">-->
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  Current Notifications"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/imageView3"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView5" />
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="wrap_content"
+                android:background="@drawable/round"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textView5"
+                android:layout_alignParentStart="true">
+
+            </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:elevation="8dp"
+        app:fabSize="normal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/listView"
+        android:layout_alignRight="@+id/listView"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+        </RelativeLayout>
+
+
+
+

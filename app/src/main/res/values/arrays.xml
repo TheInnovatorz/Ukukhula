@@ -2,9 +2,15 @@
 <resources>
 
     <string-array name="gender">
-        <item>FEMALE</item>
-        <item>MALE</item>
-        <item>OTHER</item>
+        <item>Select gender</item>
+        <item>Female</item>
+        <item>Male</item>
+
+    </string-array>
+    <string-array name="roles">
+        <item>Parent</item>
+        <item>Teacher</item>
+        <item>Admin</item>
     </string-array>
     <string-array name="roles">
         <item>parent</item>

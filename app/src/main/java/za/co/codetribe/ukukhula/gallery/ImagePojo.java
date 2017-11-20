@@ -10,6 +10,7 @@ public class ImagePojo implements Serializable {
 
     public String name;
     String url;
+    int pic;
 
 
     public ImagePojo() {
@@ -39,4 +40,13 @@ public class ImagePojo implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public int getPic() {
+        return pic;
+    }
+
+    public void setPic(int pic) {
+        this.pic = pic;
+    }
 }
+

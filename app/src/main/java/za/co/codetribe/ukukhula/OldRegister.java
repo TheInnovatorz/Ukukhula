@@ -133,7 +133,7 @@ public class Register extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
 
-                                            Intent intent = new Intent(Register.this, ProfileActivity.class);
+                                            Intent intent = new Intent(Register.this, OldProfileActivity.class);
                                             startActivity(intent);
 
                                             // dialog.cancel();

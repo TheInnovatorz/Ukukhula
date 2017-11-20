@@ -1,20 +1,14 @@
 package za.co.codetribe.ukukhula.School;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static za.co.codetribe.ukukhula.R.id.contact_details;
-import static za.co.codetribe.ukukhula.R.id.school_address;
-import static za.co.codetribe.ukukhula.R.id.school_manager;
-import static za.co.codetribe.ukukhula.R.id.school_name;
-
-/**
- * Created by User8 on 11/6/2017.
- */
-
-public class School {
+public class School implements Parcelable {
 
     private String year;
     private String schoolname;
@@ -31,12 +25,34 @@ public class School {
     }
 
     public School(String year, String schoolname,String schooladdress, String schoolmanager, String contactdetails, String emailaddress) {
+        this.year=year;
         this.schoolname = schoolname;
         this.schooladdress = schooladdress;
         this.schoolmanager = schoolmanager;
         this.contactdetails = contactdetails;
         this.emailaddress = emailaddress;
     }
+
+    protected School(Parcel in) {
+        year = in.readString();
+        schoolname = in.readString();
+        schooladdress = in.readString();
+        schoolmanager = in.readString();
+        contactdetails = in.readString();
+        emailaddress = in.readString();
+    }
+
+    public static final Creator<School> CREATOR = new Creator<School>() {
+        @Override
+        public School createFromParcel(Parcel in) {
+            return new School(in);
+        }
+
+        @Override
+        public School[] newArray(int size) {
+            return new School[size];
+        }
+    };
 
     public String getYear() {
         return year;
@@ -99,5 +115,27 @@ public class School {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(year);
+        dest.writeString(schoolname);
+        dest.writeString(schooladdress);
+        dest.writeString(schoolmanager);
+        dest.writeString(contactdetails);
+        dest.writeString(emailaddress);
+    }
+//    public School(Parcel in){
+//        this.year = in.readString();
+//        this.schoolname=in.readString();
+//        this.schooladdress=in.readString();
+//        this.schoolmanager=in.readString();
+//        this.contactdetails=in.readString();
+//        this.emailaddress=in.readString();
+//    }
 }
 

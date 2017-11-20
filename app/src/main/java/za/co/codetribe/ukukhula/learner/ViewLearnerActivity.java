@@ -4,11 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import za.co.codetribe.ukukhula.R;
 
 public class ViewLearnerActivity extends AppCompatActivity {
 
+    EditText  className,names, surname,date_of_birth,allegies,parentName, contacts,  favouriteMeal;
+    LearnerProfile object;
+    Spinner gender;
     EditText  className,names, surname, gender,date_of_birth,allegies,parentName, contacts,  favouriteMeal;
     LearnerProfile object;
 
@@ -31,6 +35,7 @@ public class ViewLearnerActivity extends AppCompatActivity {
         surname = (EditText) findViewById(R.id.editsurname);
         allegies = (EditText) findViewById(R.id.editallergies);
         gender = (EditText) findViewById(R.id.editgender);
+        gender = (Spinner) findViewById(R.id.editgender);
         parentName = (EditText) findViewById(R.id.editparentName);
         contacts = (EditText) findViewById(R.id.editContacts);
         className = (EditText) findViewById(R.id.editClassName);
@@ -43,6 +48,8 @@ public class ViewLearnerActivity extends AppCompatActivity {
         surname.setText(object.getSurname());
         className.setText(object.getClassName());
         gender.setText(object.getGender());
+//        gender.setText(object.getGender());
+        String gende= gender.getSelectedItem().toString();
         parentName.setText(object.getParentName());
         contacts.setText(object.getContacts());
         allegies.setText(object.getAllegies());

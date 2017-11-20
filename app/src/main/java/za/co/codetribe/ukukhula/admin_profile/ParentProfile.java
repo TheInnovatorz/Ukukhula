@@ -1,4 +1,4 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula.admin_profile;
 
 import com.google.firebase.database.Exclude;
 

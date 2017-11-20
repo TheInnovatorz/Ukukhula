@@ -41,6 +41,10 @@
         android:textStyle="italic"
         android:id="@+id/edtEmail"
         android:layout_marginBottom="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/round"
+        android:hint="Email Address"/>
+
         android:hint="Email Adress"/>
 
     <EditText
@@ -50,6 +54,8 @@
         android:id="@+id/edtPassword"
         android:layout_height="45dp"
         android:hint="Password"
+        android:hint="Password"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
 
         />
@@ -57,6 +63,10 @@
     <Spinner
         android:id="@+id/roles"
         android:entries="@array/roles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></Spinner>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
 

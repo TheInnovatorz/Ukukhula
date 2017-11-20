@@ -1,4 +1,4 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula.admin_profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,14 +48,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 import za.co.codetribe.ukukhula.MainActivity;
 import za.co.codetribe.ukukhula.R;
 import za.co.codetribe.ukukhula.User;
+import za.co.codetribe.ukukhula.notifications.Eventhelper;
+
+import static android.R.attr.type;
+import static android.R.attr.value;
 
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText name, surname, address, gender, contacts, parentEmail ,role,qualification;
+    EditText name, surname, address, contacts, parentEmail ,role,qualification;
     TextView dateSelected,dateofbirth;
     String nam, surnam, addres, gende, user_role, contact, dateSelecte, email,qualificatio;
     Button save;
@@ -61,6 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView profileImgPallete;
     Button view;
     String value;
+    Spinner gender;
+
 
     //authntification fields
 
@@ -109,10 +118,15 @@ public class ProfileActivity extends AppCompatActivity {
         contacts = (EditText) findViewById(R.id.editContacts);
         parentEmail = (EditText) findViewById(R.id.editemail);
         dateSelected= (TextView) findViewById(R.id.editdate);
-        gender=(EditText) findViewById(R.id.editgender);
+        gender=(Spinner) findViewById(R.id.gender);
         qualification=(EditText) findViewById(R.id.editQualifications);
 
-        //get intent
+        //spinner gender
+
+        ArrayAdapter<CharSequence> adapter=  ArrayAdapter.createFromResource(this,R.array.gender,android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        gender.setAdapter(adapter);
+
 
         //to select the date
         dateSelected.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +184,7 @@ public class ProfileActivity extends AppCompatActivity {
                         surname.setText(user.getSurname());
                         address.setText(user.getAddress());
                         contacts.setText(user.getContacts());
-                        gender.setText(user.getGender());
+                       // gender.setText(user.getGender());
                         qualification.setText(user.getQualifications());
                         dateSelected.setText(user.getDateofbirth());
                         role.setText(user.getUser_role());
@@ -252,11 +266,11 @@ public class ProfileActivity extends AppCompatActivity {
             surnam = surname.getText().toString().trim();
             addres = address.getText().toString();
             contact = contacts.getText().toString();
-            gende = gender.getText().toString();
+            //gende = gender.getText().toString();
+            String gende= gender.getSelectedItem().toString();
             dateSelecte = dateSelected.getText().toString();
             qualificatio = qualification.getText().toString();
             user_role = role.getText().toString();
-
 
 
                             //address,contacts,email,gender,name,dateofbirth,qualifications,surname,user_role
@@ -269,7 +283,12 @@ public class ProfileActivity extends AppCompatActivity {
 
             Toast.makeText(ProfileActivity.this, "data saved ", Toast.LENGTH_LONG).show();
         }
-        
+
+        try {
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override

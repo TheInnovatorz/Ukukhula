@@ -15,7 +15,7 @@ import java.util.Map;
 public class Group implements Parcelable {
 
     private String GroupNane;
-    String GroupTeacher;
+    String groupTeacher;
 
 
     public Group() {
@@ -24,12 +24,12 @@ public class Group implements Parcelable {
 
     public Group(String groupNane, String groupTeacher) {
         GroupNane = groupNane;
-        GroupTeacher = groupTeacher;
+        groupTeacher = groupTeacher;
     }
 
     protected Group(Parcel in) {
         GroupNane = in.readString();
-        GroupTeacher = in.readString();
+        groupTeacher = in.readString();
     }
 
     public static final Creator<Group> CREATOR = new Creator<Group>() {
@@ -53,18 +53,18 @@ public class Group implements Parcelable {
     }
 
     public String getGroupTeacher() {
-        return GroupTeacher;
+        return groupTeacher;
     }
 
     public void setGroupTeacher(String groupTeacher) {
-        GroupTeacher = groupTeacher;
+        groupTeacher = groupTeacher;
     }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("Group names", GroupNane);
-        result.put("Group teacher", GroupTeacher);
+        result.put("Group teacher", groupTeacher);
 
         return result;
     }
@@ -77,6 +77,8 @@ public class Group implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(GroupNane);
-        parcel.writeString(GroupTeacher);
+        parcel.writeString(groupTeacher);
     }
+
+
 }

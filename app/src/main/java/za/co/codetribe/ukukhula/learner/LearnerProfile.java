@@ -25,7 +25,7 @@ public class LearnerProfile implements Parcelable {
     private String date_of_birth;
     private String parentName;
     String contacts;
-    String Gender;
+    String gender;
     String className;
     String favouriteMeal;
 
@@ -44,7 +44,7 @@ public class LearnerProfile implements Parcelable {
         this.date_of_birth = date_of_birth;
         this.parentName = parentName;
         this.contacts = contacts;
-        Gender = gender;
+        this.gender = gender;
         this.className = className;
         this.favouriteMeal = favouriteMeal;
     }
@@ -56,7 +56,7 @@ public class LearnerProfile implements Parcelable {
         date_of_birth = in.readString();
         parentName = in.readString();
         contacts = in.readString();
-        Gender = in.readString();
+        gender = in.readString();
         className = in.readString();
         favouriteMeal = in.readString();
     }
@@ -122,11 +122,11 @@ public class LearnerProfile implements Parcelable {
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getClassName() {
@@ -179,7 +179,6 @@ public class LearnerProfile implements Parcelable {
         parcel.writeString(allegies);
         parcel.writeString(parentName);
         parcel.writeString(className);
-
     }
 
 }

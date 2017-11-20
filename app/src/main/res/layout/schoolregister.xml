@@ -58,7 +58,7 @@
 
 
             <EditText
-                android:id="@+id/school_name"
+                android:id="@+id/schoolname"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
@@ -73,7 +73,7 @@
                 android:textSize="20dp"/>
 
             <EditText
-                android:id="@+id/school_address"
+                android:id="@+id/schooladdress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
@@ -89,23 +89,23 @@
 
 
             <EditText
-                android:id="@+id/school_manager"
+                android:id="@+id/schoolmanager"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/username"
                 android:layout_marginTop="11dp"
-                android:drawablePadding="20dp"
                 android:background="@drawable/round"
+                android:drawableLeft="@drawable/managerrrr"
+                android:drawablePadding="20dp"
                 android:hint="School Manager"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/managerrrr"
                 android:paddingLeft="20dp"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
 
             <EditText
-                android:id="@+id/contact_details"
+                android:id="@+id/contactdetails"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/round"
@@ -120,7 +120,7 @@
                 android:textSize="20dp"/>
 
             <EditText
-                android:id="@+id/emal_address"
+                android:id="@+id/emaladdress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
@@ -137,19 +137,19 @@
 
 
 
-            <Button
-                android:id="@+id/save"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="11dp"
-                android:text="Save"
-                android:textColor="@android:color/black"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_weight="0.29" />
+            <!--<Button-->
+                <!--android:id="@+id/save"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="55dp"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginTop="11dp"-->
+                <!--android:text="Save"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_weight="0.29" />-->
 
         </LinearLayout>
     </ScrollView>

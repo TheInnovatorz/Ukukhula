@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,10 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import za.co.codetribe.ukukhula.Groups.ClassesActivitysList;
+import za.co.codetribe.ukukhula.Groups.Group;
+import za.co.codetribe.ukukhula.Groups.RegistedKidsActivity;
 import za.co.codetribe.ukukhula.R;
-import za.co.codetribe.ukukhula.learner.LearnerProfile;
-import za.co.codetribe.ukukhula.learner.LearnersAdapter;
-import za.co.codetribe.ukukhula.learner.RegisterLearner;
 
 public class TeacherActivity extends AppCompatActivity {
     FirebaseDatabase firebaseData;
@@ -60,7 +63,7 @@ public class TeacherActivity extends AppCompatActivity {
         profLists = new ArrayList<>();
 
         roofdef = FirebaseDatabase.getInstance().getReference();
-        demodef = roofdef.child("Teachers");
+        demodef = roofdef.child("users");
 
     }
 
@@ -83,24 +86,43 @@ public class TeacherActivity extends AppCompatActivity {
                     profLists.add(profil);
 
                 }
-
+//                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        LearnerProfile testData =  profLists.get(i);
+//                        Log.i(" Dimplez ", testData.getNames() + testData.getNames()+ testData.getSurname() );
+//
+//                        Intent intent=new Intent(LearnrsActivity.this, ViewLearnerActivity.class);
+//                        intent.putExtra("data",testData);
+//                        startActivity(intent);
+//                        Toast.makeText(context, "I'm inside the list " , Toast.LENGTH_LONG).show();
                 TeacherAdapter adapter = new TeacherAdapter(TeacherActivity.this, profLists);
                 listview.setAdapter(adapter);
 
-//                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        LearnerProfile profList = profLists.get(position);
-//                        Intent i = new Intent(LearnrsActivity.this, RegisterLearners.class);
-//                        startActivity(i);
-//                        // Toast.makeText(getApplicationContext(),"clicked",Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                });
+                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                        TeacherProfile profile = profLists.get(i);
+                        Intent intent = new Intent(TeacherActivity.this, RegisterActivity.class);
+                        startActivity(intent);
+                        intent.putExtra("grous",profile);
+                         Toast.makeText(getApplicationContext(),"clicked",Toast.LENGTH_SHORT).show();
+                    }
+
+                });
 
 
             }
-
+//   listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                    Group testData =  groupList.get(i);
+//                    Log.i(" Dimplezzzzz ", testData.getGroupNane() + testData.getGroupTeacher());
+//
+//                    Intent intent=new Intent(ClassesActivitysList.this, RegistedKidsActivity.class);
+//                    intent.putExtra("groups",testData);
+//                    startActivity(intent);
+//                    //Toast.makeText(context, "I'm inside the list " , Toast.LENGTH_LONG).show();
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

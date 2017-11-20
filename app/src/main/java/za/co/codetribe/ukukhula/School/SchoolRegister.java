@@ -34,7 +34,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import za.co.codetribe.ukukhula.AdminProfile.ProfileActivity;
 import za.co.codetribe.ukukhula.MainActivity;
 import za.co.codetribe.ukukhula.R;
 
@@ -44,17 +43,17 @@ import za.co.codetribe.ukukhula.StartActivity;
 public class SchoolRegister extends AppCompatActivity {
 
 
-    String yea, school_nam, school_addr, school_manage, contact_detail, email_addres;
+    String yea, schoolnam, schooladdr, schoolmanage, contactdetail, emailaddres;
 
     EditText year;
-    EditText school_name;
-    EditText school_address;
+    EditText schoolname;
+    EditText schooladdress;
     //= (EditText) findViewById(R.id.school_address);
-    EditText school_manager;
-    EditText contact_details;
-    EditText email_address;
+    EditText schoolmanager;
+    EditText contactdetails;
+    EditText emailaddress;
     Button save;
-    CircleImageView profilePic;
+//    CircleImageView profilePic;
     ImageView profileImgPallete;
     Button view;
 
@@ -64,11 +63,7 @@ public class SchoolRegister extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser user;
     FirebaseAuth.AuthStateListener mAuthListerner;
-
-    //FIREBASE DATABASE FIELDS
-    //DatabaseReference userDatabase;
-    // StorageReference mStorageRef;
-
+    School school;
 
     //images
     Uri imageUri;
@@ -84,7 +79,12 @@ public class SchoolRegister extends AppCompatActivity {
         setContentView(R.layout.schoolregister);
         // Toast.makeText( getBaseContext(), "I was clicked", Toast.LENGTH_LONG ).show();
         //BACK ARROW
-        //getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+
+        school = (School)getIntent().getParcelableExtra("SchoolRegister");
+
+
+
 
         //assign the firebase auth instaances
 
@@ -110,10 +110,10 @@ public class SchoolRegister extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         //userDatabase = FirebaseDatabase.getInstance().getReference().child( "Users" ).child(  );
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+       // mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //IMAGES
-        profilePic = (CircleImageView) findViewById(R.id.imageButton);
+//        profilePic = (CircleImageView) findViewById(R.id.imageButton);
         //upload = (FloatingActionButton) findViewById( R.id.floatingActionButton );
 
 
@@ -121,33 +121,33 @@ public class SchoolRegister extends AppCompatActivity {
         Button save = (Button) findViewById(R.id.saveData);
         // view = (Button) findViewById(R.id.view);
 
-        profilePic = (CircleImageView) findViewById(R.id.imageButton);
+//        profilePic = (CircleImageView) findViewById(R.id.imageButton);
         //  profileImgPallete = (ImageView) findViewById(R.id.image_palette);
 
         year = (EditText) findViewById(R.id.year);
-        school_name = (EditText) findViewById(R.id.school_name);
-        school_address = (EditText) findViewById(R.id.school_address);
-        school_manager = (EditText) findViewById(R.id.school_manager);
-        contact_details = (EditText) findViewById(R.id.contact_details);
-        email_address = (EditText) findViewById(R.id.emal_address);
+        schoolname = (EditText) findViewById(R.id.schoolname);
+        schooladdress = (EditText) findViewById(R.id.schooladdress);
+        schoolmanager = (EditText) findViewById(R.id.schoolmanager);
+        contactdetails = (EditText) findViewById(R.id.contactdetails);
+        emailaddress = (EditText) findViewById(R.id.emaladdress);
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("SchoolRegister");
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i("school", "Parent : " + dataSnapshot.toString());
+
                 if (dataSnapshot.getValue() != null) {
-
-
-                    School school = dataSnapshot.getValue(School.class);
                     //ParentProfile parentProfile = dataSnapshot.getValue( ParentProfile.class );
+                    School school = dataSnapshot.getValue(School.class);
                     year.setText(school.getYear());
-                    school_name.setText(school.getSchoolname());
-                    school_address.setText(school.getSchooladdress());
-                    school_manager.setText(school.getSchoolmanager());
-                    contact_details.setText(school.getContactdetails());
-                    email_address.setText(school.getEmailaddress());
+                    schoolname.setText(school.getSchoolname());
+                    schooladdress.setText(school.getSchooladdress());
+                    schoolmanager.setText(school.getSchoolmanager());
+                    contactdetails.setText(school.getContactdetails());
+                    emailaddress.setText(school.getEmailaddress());
+                    Toast.makeText(SchoolRegister.this," Your..."+school.getEmailaddress(),Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -156,9 +156,8 @@ public class SchoolRegister extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
-
-
         /*upload = findViewById( R.id.floatingActionButton );
         upload.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -170,22 +169,22 @@ public class SchoolRegister extends AppCompatActivity {
             }
         } );
         */
-        save =(Button) findViewById( R.id.save);
+      //  save =(Button) findViewById( R.id.save);
 
-        save.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addLearners();
-
-
-                Intent intent;
-                intent = new Intent( SchoolRegister.this, MainActivity.class );
-                startActivity( intent );
-                Toast.makeText( SchoolRegister.this, " data is saving", Toast.LENGTH_LONG ).show();
-            }
-
-
-        } );
+//        save.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addLearners();
+//
+//
+//                Intent intent;
+//                intent = new Intent( SchoolRegister.this, MainActivity.class );
+//                startActivity( intent );
+//                Toast.makeText( SchoolRegister.this, " data is saving", Toast.LENGTH_LONG ).show();
+//            }
+//
+//
+//        } );
 
        /* view.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -198,13 +197,11 @@ public class SchoolRegister extends AppCompatActivity {
         */
     }
 
-    private static int year() {
-        return 0;
-    }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    static void getcontact_details() {
     }
-
 //    public void displayProfilePic(String imageUrl) {
 //        //.transform(new CircleTransform(getBaseContext))
 //        if (!"".equals( imageUrl )) {
@@ -279,18 +276,18 @@ public class SchoolRegister extends AppCompatActivity {
 */
 //to save extra info using current user id
 
-    private void addLearners() {
+    private void addSchool() {
 
 
 
             yea = year.getText().toString().trim();
-            school_nam = school_name.getText().toString().trim();
-            school_addr = school_address.getText().toString();
-            school_manage = school_manager.getText().toString();
-            contact_detail = contact_details.getText().toString();
-            email_addres = email_address.getText().toString();
+            schoolnam = schoolname.getText().toString().trim();
+            schooladdr = schooladdress.getText().toString().trim();
+            schoolmanage = schoolmanager.getText().toString().trim();
+            contactdetail = contactdetails.getText().toString().trim();
+            emailaddres = emailaddress.getText().toString().trim();
 
-            School scchoolR = new School( yea, school_nam, school_addr, school_manage, contact_detail, email_addres );
+            School scchoolR = new School( yea, schoolnam, schooladdr, schoolmanage, contactdetail, emailaddres );
             Map<String, Object> scchoolRValues = scchoolR.toMap();
 
             Map<String, Object> childUpdates = new HashMap<>();
@@ -308,39 +305,39 @@ public class SchoolRegister extends AppCompatActivity {
 
         if (requestCode == ACTION_CODE && resultCode == RESULT_OK) {
             imageUri = data.getData();
-            uploadImage();
+          //  uploadImage();
             //profilePic.setImageURI(imageUri);
         }
     }
 
 
-    public void uploadImage() {
-
-        //khuthadzo should be replaced by user.getUid();
-        StorageReference filePath = storageReference.child( "profile_pics" ).child( user.getUid() + ".jpeg" );
-        filePath.putFile( imageUri ).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                String uriImage = taskSnapshot.getDownloadUrl().toString();
-//                displayProfilePic( uriImage );
-                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                        .setPhotoUri( taskSnapshot.getDownloadUrl() )
-                        .build();
-
-                user.updateProfile( profileUpdates )
-                        .addOnCompleteListener( new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d( "Ygritte", "User profile updated." );
-                                }
-                            }
-                        } );
-            }
-        } );
-
-
-    }
+//    public void uploadImage() {
+//
+//        //khuthadzo should be replaced by user.getUid();
+//        StorageReference filePath = storageReference.child( "profile_pics" ).child( user.getUid() + ".jpeg" );
+//        filePath.putFile( imageUri ).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                String uriImage = taskSnapshot.getDownloadUrl().toString();
+////                displayProfilePic( uriImage );
+//                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+//                        .setPhotoUri( taskSnapshot.getDownloadUrl() )
+//                        .build();
+//
+//                user.updateProfile( profileUpdates )
+//                        .addOnCompleteListener( new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if (task.isSuccessful()) {
+//                                    Log.d( "Ygritte", "User profile updated." );
+//                                }
+//                            }
+//                        } );
+//            }
+//        } );
+//
+//
+//    }
 
     //  BACK ARROW
 
@@ -351,7 +348,7 @@ public class SchoolRegister extends AppCompatActivity {
         {
             case R.id.done:
                 Toast.makeText( SchoolRegister.this, "add is press ", Toast.LENGTH_LONG ).show();
-                addLearners();
+                addSchool();
                 Intent intent = new Intent(SchoolRegister.this,MainActivity.class);
                 startActivity(intent);
 

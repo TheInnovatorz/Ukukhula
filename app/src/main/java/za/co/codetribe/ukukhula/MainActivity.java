@@ -29,6 +29,7 @@ import java.util.List;
 
 import za.co.codetribe.ukukhula.AdminProfile.ProfileActivity;
 import za.co.codetribe.ukukhula.Groups.ClassesActivitys;
+import za.co.codetribe.ukukhula.Groups.ClassesActivitysList;
 import za.co.codetribe.ukukhula.School.SchoolRegister;
 import za.co.codetribe.ukukhula.Teacher.RegisterActivity;
 import za.co.codetribe.ukukhula.Teacher.TeacherActivity;
@@ -37,6 +38,7 @@ import za.co.codetribe.ukukhula.gallery.ImageAdapter;
 import za.co.codetribe.ukukhula.gallery.ImageDisplayActivity;
 import za.co.codetribe.ukukhula.gallery.ImagePojo;
 import za.co.codetribe.ukukhula.learner.LearnrsActivity;
+import za.co.codetribe.ukukhula.notifications.EventActivity;
 import za.co.codetribe.ukukhula.notifications.Eventhelper;
 
 public class MainActivity extends AppCompatActivity
@@ -120,31 +122,31 @@ public class MainActivity extends AppCompatActivity
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("imagess");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                pd.dismiss();
-//
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Log.i(" AVIWE", dataSnapshot.toString());
-//                    ImagePojo imagePojo = (ImagePojo) dataSnapshot1.getValue(ImagePojo.class);
-//                    imgList.add(imagePojo);
-//
-//                }
-//
-//
-//                ImageAdapter adapter = new ImageAdapter(MainActivity.this, R.layout.activity_gallarylist, imgList);
-//                listView.setAdapter(adapter);
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                pd.dismiss();
-//
-//            }
-//        });
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                pd.dismiss();
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Log.i(" AVIWE", dataSnapshot.toString());
+                    ImagePojo imagePojo = (ImagePojo) dataSnapshot1.getValue(ImagePojo.class);
+                    imgList.add(imagePojo);
+
+                }
+
+
+                ImageAdapter adapter = new ImageAdapter(MainActivity.this, R.layout.activity_gallarylist, imgList);
+                listView.setAdapter(adapter);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                pd.dismiss();
+
+            }
+        });
 //
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +217,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_classes) {
-            Intent intent = new Intent(MainActivity.this, ClassesActivitys.class);
+            Intent intent = new Intent(MainActivity.this, ClassesActivitysList.class);
             startActivity(intent);
 
         } else if (id == R.id.logout) {
