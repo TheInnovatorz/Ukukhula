@@ -60,13 +60,12 @@ public class StartActivity extends AppCompatActivity {
            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                FirebaseUser user= firebaseAuth.getCurrentUser();
-//                if(user!=null)
-//               {
-//                    finish();
-//                    Intent moveToHoe=new Intent(MainActivity.this,HomeActivity.class);
-//                   startActivity(moveToHoe);
-//                }
-           }
+                if(user!=null)
+               {
+                    Intent moveToHoe=new Intent(StartActivity.this,MainActivity.class);
+                    startActivity(moveToHoe);
+                }
+          }
        };
 
 
@@ -81,19 +80,18 @@ public class StartActivity extends AppCompatActivity {
 
        // Intent intent = getIntent();
         //String role = intent.getDataString("Role");
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            rolotype = bundle.getString("Role");
-        }
-        Toast.makeText(getApplicationContext(), "Role "+ rolotype, Toast.LENGTH_LONG).show();
-       Log.i("avo" ,rolotype);
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            rolotype = bundle.getString("Role");
+//        }
+//        Toast.makeText(getApplicationContext(), "Role "+ rolotype, Toast.LENGTH_LONG).show();
+//        //Log.i("avo" ,rolotype);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(getApplicationContext(), "Aviwe modise", Toast.LENGTH_LONG).show();
         if (mAuthListener != null) {
             mAuth.addAuthStateListener(mAuthListener);
         }
@@ -155,21 +153,8 @@ public class StartActivity extends AppCompatActivity {
 
 
     public void register(View view) {
-
-
-        if (rolotype.equals("Parent")) {
-            String role="Parent";
-            Intent intent = new Intent(StartActivity.this, Register.class);
-            intent.putExtra("Role", role);
-            startActivity(intent);
-        }else
-        {
-            String role="Admin/Teacher";
-            Intent intent = new Intent(StartActivity.this, Register.class);
-            intent.putExtra("Role", role);
-            startActivity(intent);
-        }
-
+        Intent intent = new Intent(StartActivity.this, Register.class);
+        startActivity(intent);
     }
 
     public void passwordForget(View view) {

@@ -6,39 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="za.co.codetribe.kid.ProfileActivity"
    >
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="105dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/factfile">
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilepicture"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_marginBottom="25dp"
-            android:src="@drawable/profile" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:paddingLeft="22dp"
-            android:text=" Fact File    "
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/profilepicture" />
+            android:layout_alignParentStart="true"
+            android:elevation="10dp"
+            android:gravity="left"
+            android:src="@drawable/logo" />
 
     </RelativeLayout>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/profilepicture"
+        android:layout_gravity="left"
+        android:text="ADD DETAILS"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,28 +53,24 @@
         android:paddingRight="10dp"
         android:weightSum="2">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Child"
-        android:gravity="center"
-        android:textSize="30sp" />
 
         <TextView
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:layout_gravity="start"
             android:text="Pin"
-            android:paddingLeft="22dp"
+            android:layout_weight="0.55"
+            android:textStyle="italic"
+            android:paddingStart="15dp"
             />
 
         <EditText
             android:id="@+id/pin"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_gravity="start"
-            android:background="@drawable/bkg"
             android:inputType="number" />
 
         <!--<LinearLayout-->
@@ -103,81 +99,92 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="Class Name"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:paddingStart="15dp"
             android:paddingLeft="22dp"
             />
 
         <EditText
             android:id="@+id/clnmEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_gravity="start"
-            android:background="@drawable/bkg"
+
             android:inputType="textPersonName" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:textStyle="italic"
         android:text="Full Name(s)"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/editTextname"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
         android:inputType="textPersonName" />
 
 
     <TextView
+        android:text="Surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:text="Surname"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
+        android:textStyle="italic"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/surnameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
         android:inputType="textPersonName" />
 
     <TextView
+        android:text="Age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:text="Age"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
+        android:textStyle="italic"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/ageEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:inputType="number" />
 
 
 
     <TextView
+        android:text="Date of Birth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:text="Date of Birth"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
+        android:textStyle="italic"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/dateEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:inputType="date" />
 
     <TextView
@@ -185,15 +192,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:text="Favourite Meal"
+        android:textSize="20dp"
+        android:paddingStart="15dp"
+        android:textStyle="italic"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/mealEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
         android:inputType="text" />
 
     <TextView
@@ -201,15 +210,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:text="Allergies"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/allergiesEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
         android:inputType="text" />
 
     <TextView
@@ -217,15 +228,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:text="Address"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
         android:paddingLeft="22dp"
+        android:textSize="20dp"
         />
 
     <EditText
         android:id="@+id/addressEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
+        android:paddingLeft="22dp"
+        android:textSize="20dp"
         android:inputType="textPostalAddress" />
 
 
@@ -242,54 +259,70 @@
         android:layout_height="wrap_content"
         android:text="Parent"
         android:layout_gravity="center"
+        android:paddingLeft="22dp"
         android:textSize="20sp" />
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
         android:text="Name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
         android:paddingLeft="22dp"
         />
 
     <EditText
         android:id="@+id/pnameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
+        android:paddingLeft="22dp"
+        android:textSize="20dp"
         android:inputType="textPersonName" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
         android:text="Contact"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
         android:paddingLeft="22dp"
         />
 
+
     <EditText
         android:id="@+id/contactsEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="start"
-        android:background="@drawable/bkg"
+        android:textStyle="italic"
+        android:paddingStart="15dp"
+        android:paddingLeft="22dp"
+        android:textSize="20dp"
         android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:alpha="0.90"
-        android:background="@drawable/gradient2"
-      android:onClick="Save"
-        android:padding="16dp"
-        android:text="SAVE"
-        android:textAllCaps="true"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="0.90"
+            android:background="@drawable/login_button"
+            android:onClick="Save"
+            android:paddingLeft="10dp"
+            android:text="SAVE"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
 </LinearLayout>
     </ScrollView>

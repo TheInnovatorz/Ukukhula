@@ -1,11 +1,15 @@
 package za.co.codetribe.ukukhula.learner;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.Transaction;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.R.attr.name;
 import static android.R.attr.type;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
@@ -13,7 +17,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
  * Created by Codetribe on 2017/10/25.
  */
 
-public class LearnerProfile {
+public class LearnerProfile implements Parcelable {
 
     private String names;
     private String surname;
@@ -24,6 +28,8 @@ public class LearnerProfile {
     String Gender;
     String className;
     String favouriteMeal;
+
+   // private MySubParcelable mInfo;
 
     // Children but will add it later once we have the right structure
 
@@ -42,6 +48,30 @@ public class LearnerProfile {
         this.className = className;
         this.favouriteMeal = favouriteMeal;
     }
+
+    protected LearnerProfile(Parcel in) {
+        names = in.readString();
+        surname = in.readString();
+        allegies = in.readString();
+        date_of_birth = in.readString();
+        parentName = in.readString();
+        contacts = in.readString();
+        Gender = in.readString();
+        className = in.readString();
+        favouriteMeal = in.readString();
+    }
+
+    public static final Creator<LearnerProfile> CREATOR = new Creator<LearnerProfile>() {
+        @Override
+        public LearnerProfile createFromParcel(Parcel in) {
+            return new LearnerProfile(in);
+        }
+
+        @Override
+        public LearnerProfile[] newArray(int size) {
+            return new LearnerProfile[size];
+        }
+    };
 
     public String getNames() {
         return names;
@@ -115,21 +145,41 @@ public class LearnerProfile {
         this.favouriteMeal = favouriteMeal;
     }
 
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("names", names);
-        result.put("surname", surname);
-        result.put("contact_number", contacts);
-        result.put("date_of_birth", date_of_birth);
-        result.put("favouriteMeal", favouriteMeal);
-        result.put("gender",Gender);
-        result.put("allegies",allegies);
-        result.put("parentName",parentName);
-        result.put("className",className);
+//    @Exclude
+//    public Map<String, Object> toMap() {
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("names", names);
+//        result.put("surname", surname);
+//        result.put("contact_number", contacts);
+//        result.put("date_of_birth", date_of_birth);
+//        result.put("favouriteMeal", favouriteMeal);
+//        result.put("gender",Gender);
+//        result.put("allegies",allegies);
+//        result.put("parentName",parentName);
+//        result.put("className",className);
+//
+//
+//
+//        return result;
+//    }
 
-
-
-        return result;
+    @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(names);
+        parcel.writeString(surname);
+        parcel.writeString(contacts);
+        parcel.writeString(date_of_birth);
+        parcel.writeString(favouriteMeal);
+        parcel.writeString(Gender);
+        parcel.writeString(allegies);
+        parcel.writeString(parentName);
+        parcel.writeString(className);
+
+    }
+
 }

@@ -1,10 +1,12 @@
 package za.co.codetribe.ukukhula.Groups;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,9 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import za.co.codetribe.ukukhula.R;
+import za.co.codetribe.ukukhula.learner.LearnerProfile;
+import za.co.codetribe.ukukhula.learner.LearnrsActivity;
+import za.co.codetribe.ukukhula.learner.ViewLearnerActivity;
 import za.co.codetribe.ukukhula.notifications.EventAdapter;
 
 import static android.app.DatePickerDialog.OnDateSetListener;
+import static android.media.CamcorderProfile.get;
 import static za.co.codetribe.ukukhula.R.id.gName;
 
 /**
@@ -88,6 +94,23 @@ public class ClassesActivitys extends AppCompatActivity {
                 addEvent();
             }
         });
+
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Group testData =  groupList.get(i);
+                Log.i(" Dimplezzzzz ", testData.getGroupNane() + testData.getGroupTeacher());
+
+                Intent intent=new Intent(ClassesActivitys.this, RegistedKidsActivity.class);
+                intent.putExtra("groups",testData);
+                startActivity(intent);
+                //Toast.makeText(context, "I'm inside the list " , Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
 
     }
 

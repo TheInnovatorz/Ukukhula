@@ -29,11 +29,12 @@
         <!--/>-->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageButton"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:src="@drawable/factfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
-        android:elevation="8dp"
+        android:elevation="4dp"
         app:srcCompat="@android:drawable/ic_menu_camera"
         android:layout_alignBottom="@+id/imageButton"
         android:layout_alignStart="@+id/imageButton"
@@ -53,8 +54,9 @@
         android:text="Admin/Teacher"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:id="@+id/role"
         android:layout_below="@+id/imageButton"
-        android:layout_centerHorizontal="true" />
+        />
 
 
 
@@ -63,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:id="@+id/linearLayout4"
         >
 
@@ -87,9 +89,8 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
                     android:ems="10"
-            android:background="@drawable/round"
-            android:hint="   Name"
-            android:textStyle="bold"
+                    android:hint="Name"
+                    android:textStyle="italic"
             android:inputType="textPersonName"
             android:layout_weight="0.55"
                     android:layout_marginBottom="10dp"/>
@@ -99,9 +100,9 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:ems="10"
-            android:background="@drawable/round"
             android:layout_marginBottom="10dp"
-            android:hint="   Surname"
+            android:hint="Surname"
+            android:textStyle="italic"
             android:inputType="textPersonName" />
 
         <EditText
@@ -109,22 +110,23 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:ems="10"
-            android:background="@drawable/round"
-            android:layout_marginBottom="10dp"
+            android:textStyle="italic"
+            android:layout_marginBottom="20dp"
             android:inputType="textPersonName"
-            android:hint="   Address" />
+            android:hint="Address" />
 
 
 
         <TextView
             android:id="@+id/editdate"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="40dp"
             android:ems="10"
-            android:background="@drawable/round"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:hint="    Date of bith" />
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="2dp"
+            android:hint="Date Of Birth" />
 
 
 
@@ -134,20 +136,19 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:ems="10"
-            android:background="@drawable/round"
+            android:textStyle="italic"
             android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
-            android:hint="      cellphone number" />
+            android:hint="Cellphone number" />
 
                 <EditText
                     android:id="@+id/editemail"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:ems="10"
-                    android:background="@drawable/round"
-
+                    android:textStyle="italic"
                     android:inputType="textPersonName"
-                    android:hint="      Email"
+                    android:hint="Email"
              />
 
 
@@ -157,10 +158,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:ems="10"
-                    android:background="@drawable/round"
+                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
                     android:inputType="textPersonName"
-                    android:hint="     gender" />
+                    android:hint="Gender" />
 
                 <!--<EditText-->
                     <!--android:id="@+id/editIdNumber"-->
@@ -182,10 +183,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:ems="10"
-                    android:background="@drawable/round"
+                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
                     android:inputType="textPersonName"
-                    android:hint="     Role" />
+                    android:hint="Role" />
 
                 <!--<EditText-->
                     <!--android:id="@+id/edit"-->
@@ -207,10 +208,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:ems="10"
-                    android:background="@drawable/round"
+                    android:textStyle="italic"
                     android:layout_marginBottom="10dp"
                     android:inputType="textPersonName"
-                    android:hint="     qualification" />
+                    android:hint="Qualification" />
 
 
 

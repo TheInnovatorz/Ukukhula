@@ -1,4 +1,4 @@
-package za.co.codetribe.ukukhula.AdminProfile;
+package za.co.codetribe.ukukhula;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -46,9 +46,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import za.co.codetribe.ukukhula.MainActivity;
-import za.co.codetribe.ukukhula.R;
-import za.co.codetribe.ukukhula.User;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -269,7 +266,12 @@ public class ProfileActivity extends AppCompatActivity {
 
             Toast.makeText(ProfileActivity.this, "data saved ", Toast.LENGTH_LONG).show();
         }
-        
+
+        try {
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override

@@ -4,36 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="za.co.codetribe.ukukhula.SlaspActivity">
+    tools:context="za.co.codetribe.ukukhula.SplashActivity">
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo"
+        android:paddingTop="11dp"
+      android:layout_centerHorizontal="true"
+        android:id="@+id/imageView2" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="School"
-        android:layout_marginBottom="20dp"
-        android:textColor="#fff"
-        android:textSize="25dp"
-        android:textAllCaps="false"
-
         android:id="@+id/school"
-        android:onClick="school"
-        android:layout_above="@+id/parent"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Parent"
-        android:layout_marginBottom="173dp"
-        android:id="@+id/parent"
-        android:textSize="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/login_button"
+        android:onClick="school"
+        android:text="SCHOOL"
         android:textAllCaps="false"
         android:textColor="#fff"
+        android:textSize="25dp" />
 
-        android:onClick="parent"
+    <Button
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/login_button"
+        android:onClick="parent"
+        android:text="PARENT"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="25dp" />
 
 
 

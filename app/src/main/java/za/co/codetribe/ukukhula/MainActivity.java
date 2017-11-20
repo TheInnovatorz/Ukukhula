@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     ListView listView;
 
     ProgressDialog pd;
+    FirebaseAuth auth;
     FirebaseUser firebaserUser;
     DatabaseReference userRef;
     User user;
@@ -62,7 +63,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+
+
         firebaserUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        Log.i(" mlabb",firebaserUser.getUid());
 
 
         listView = (ListView) findViewById(R.id.listImages);
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         imgList = new ArrayList<>();
@@ -91,16 +96,14 @@ public class MainActivity extends AppCompatActivity
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     user = dataSnapshot.getValue(User.class);
                     Log.i("Dimplez" , dataSnapshot.toString());
+                    if (dataSnapshot.getValue() != null ) {
+                        if ("admin".equals(user.getUser_role()) || "teacher".equals(user.getUser_role())) {
+                            navigationView.getMenu().removeItem(R.id.nav_Children);
+                        } else {
+                            navigationView.getMenu().removeItem(R.id.nav_teacher);
 
-                    if("Admin/Teacher".equals(user.getUser_role()))
-                    {
-
-                    }
-                    else
-                    {
-                        navigationView.getMenu().removeItem(R.id.nav_teacher);
-                        navigationView.getMenu().removeItem(R.id.nav_Children);
-                        navigationView.getMenu().removeItem(R.id.nav_classes);
+                            navigationView.getMenu().removeItem(R.id.nav_classes);
+                        }
                     }
                 }
 
@@ -216,6 +219,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, StartActivity.class);
             startActivity(intent);
 

@@ -72,12 +72,12 @@ public class GroupAdapter extends ArrayAdapter<Group> {
             eDescription.setText(group.getGroupTeacher());
            // eDate.setText(event.getDate());
 
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(context,group.getGroupNane(),Toast.LENGTH_LONG).show();
-                }
-            });
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                  Toast.makeText(context,group.getGroupNane(),Toast.LENGTH_LONG).show();
+//                }
+//            });
 
             return convertView;
         }

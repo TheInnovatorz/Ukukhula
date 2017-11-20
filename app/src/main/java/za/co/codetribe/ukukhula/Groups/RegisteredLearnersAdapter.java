@@ -1,27 +1,24 @@
-package za.co.codetribe.ukukhula.learner;
+package za.co.codetribe.ukukhula.Groups;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import za.co.codetribe.ukukhula.R;
+import za.co.codetribe.ukukhula.learner.LearnerProfile;
 
-public class LearnersAdapter extends ArrayAdapter<LearnerProfile> {
+public class RegisteredLearnersAdapter extends ArrayAdapter<LearnerProfile> {
 
     private Context context;
     private List<LearnerProfile> profList;
 
-    public LearnersAdapter(Context context, List<LearnerProfile> profList) {
+    public RegisteredLearnersAdapter(Context context, int customprofilelist, List<LearnerProfile> profList) {
         super(context, 0 , profList);
         this.context = context;
         this.profList = profList;
@@ -54,7 +51,7 @@ public class LearnersAdapter extends ArrayAdapter<LearnerProfile> {
         View listItemView = convertView;
         if (listItemView ==null)
         {
-            listItemView=  LayoutInflater.from(getContext()).inflate(R.layout.customprofilelist,parent,false);
+            listItemView=  LayoutInflater.from(getContext()).inflate(R.layout.registeslearnerslist,parent,false);
 
         }
         LearnerProfile profList=this.getItem(position);

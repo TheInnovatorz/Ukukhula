@@ -4,12 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="75dp"
+    android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     tools:context="za.co.codetribe.ukukhula.AdminProfile.ProfileActivity"
     android:orientation="vertical"
     android:weightSum="1">
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        />
 
 
     <TextView
@@ -18,60 +26,61 @@
         android:text="Register form"
         android:id="@+id/textView2"
         android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAllCaps="true"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"/>
 
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText"-->
-        <!--android:hint="name"/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText2"-->
-        <!--android:hint="Surname"/>-->
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:paddingLeft="10dp"
+        android:textStyle="italic"
         android:id="@+id/edtEmail"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/round"
         android:hint="Email Adress"/>
 
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editText4"-->
-        <!--android:hint="Gender"/>-->
-
     <EditText
+        android:paddingLeft="10dp"
+        android:textStyle="italic"
         android:layout_width="match_parent"
         android:id="@+id/edtPassword"
         android:layout_height="45dp"
-        android:hint="password"
+        android:hint="Password"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/round"
+
         />
 
+    <Spinner
+        android:id="@+id/roles"
+        android:entries="@array/roles"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
 
+        >
 
+    </Spinner>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="REGISTER"
         android:id="@+id/btnRegister"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="save"/>
+        android:background="@drawable/login_button"
+        android:onClick="save"
+        android:paddingTop="10dp"
+        android:text="REGISTER"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="12sp"
         android:id="@+id/txtSign"
         android:text="Already Registered? Sign in here"/>
 
