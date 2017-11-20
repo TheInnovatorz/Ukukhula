@@ -26,7 +26,7 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".Groups.RegistedKidsActivity" />
         <activity
-            android:name=".admin_profile.RegisterActivity"
+            android:name=".admin_profile.Register"
             android:label="Admin Register" /> <activity
             android:name=".OldRegister"
             android:label="Admin Register" />

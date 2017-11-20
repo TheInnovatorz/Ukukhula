@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:paddingBottom="30sp"
         android:paddingTop="30sp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logoone" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"

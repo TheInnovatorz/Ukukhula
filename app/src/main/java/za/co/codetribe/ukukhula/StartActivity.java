@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import za.co.codetribe.ukukhula.admin_profile.RegisterActivity;
+import za.co.codetribe.ukukhula.admin_profile.Register;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -116,8 +116,8 @@ public class StartActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter your password  ", Toast.LENGTH_LONG).show();
             return;
         }
-//        progressDialog.setMessage("Registering user......");
-//        progressDialog.show();
+       progressDialog.setMessage("Registering user......");
+        progressDialog.show();
        // Toast.makeText(getApplicationContext(), "i am succesful " , Toast.LENGTH_LONG).show();
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -126,7 +126,7 @@ public class StartActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if (task.isSuccessful()) {
-                           // Toast.makeText(getApplicationContext(), "i am succesful " , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "i am succesful " , Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
@@ -147,16 +147,16 @@ public class StartActivity extends AppCompatActivity {
 
 
     public void register(View view) {
-        Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(StartActivity.this, Register.class);
         startActivity(intent);
     }
 
     public void passwordForget(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
     public void loginAdmin(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
 }
